@@ -44,6 +44,7 @@ class Graph {
     return results;
   };
 
+  edgeTo = [];
   bfs = () => {
     const root = 0;
     this.visited = [];
@@ -58,6 +59,7 @@ class Graph {
       for (let i = 0; i < this.adjacencies[parVertex].length; i++) {
         const curVertex = this.adjacencies[parVertex][i];
         if (!this.visited[curVertex]) {
+          this.edgeTo[curVertex] = parVertex;
           this.visited[curVertex] = true;
           results.push(`Visited vertex: ${curVertex}`);
           queue.push(curVertex);
@@ -66,6 +68,17 @@ class Graph {
     }
 
     return results;
+  };
+
+  pathTo = (v: number) => {
+    const source = 0;
+    var path = [];
+    for (let i = v; i != source; i = this.edgeTo[i]) {
+      path.push(i);
+    }
+
+    path.push(source);
+    return path.join(' -> ');
   };
 }
 
