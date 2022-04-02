@@ -1,7 +1,72 @@
 console.log('Hello World!');
 
-const graph = () => {
-  return true;
-};
+class Graph {
+  totalVertices: number;
+  adjacencies: number[][];
 
-export { graph };
+  constructor(totalVertices: number) {
+    this.totalVertices = totalVertices;
+    this.adjacencies = [];
+    for (let i = 0; i < totalVertices; i++) {
+      this.adjacencies[i] = [];
+    }
+  }
+
+  addEdge = (src: number, dest: number) => {
+    this.adjacencies[src].push(dest);
+    this.adjacencies[dest].push(src);
+  };
+
+  showGraph = () => {
+    let results = [];
+    for (let i = 0; i < this.totalVertices; i++) {
+      let result = `${i} -> `;
+      for (let j = 0; j < this.adjacencies[i].length; j++) {
+        result += ` ${this.adjacencies[i][j]}`;
+      }
+      results.push(result);
+    }
+
+    return results;
+  };
+
+  visited: boolean[] = [];
+  dfs = (v = 0, results = []) => {
+    results.push(`Visited vertex: ${v}`);
+    this.visited[v] = true;
+
+    for (let i = 0; i < this.adjacencies[v].length; i++) {
+      var curVertex = this.adjacencies[v][i];
+      if (!this.visited[curVertex]) {
+        this.dfs(curVertex, results);
+      }
+    }
+    return results;
+  };
+
+  bfs = () => {
+    const root = 0;
+    this.visited = [];
+    let queue = [root];
+    let results = [];
+
+    results.push(`Visited vertex: ${root}`);
+    this.visited[root] = true;
+
+    while (queue.length > 0) {
+      const parVertex = queue.shift();
+      for (let i = 0; i < this.adjacencies[parVertex].length; i++) {
+        const curVertex = this.adjacencies[parVertex][i];
+        if (!this.visited[curVertex]) {
+          this.visited[curVertex] = true;
+          results.push(`Visited vertex: ${curVertex}`);
+          queue.push(curVertex);
+        }
+      }
+    }
+
+    return results;
+  };
+}
+
+export default Graph;

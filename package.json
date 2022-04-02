@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsnd --respawn src/graph.ts",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
