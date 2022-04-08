@@ -1,5 +1,3 @@
-console.log('Hello World!');
-
 class Graph {
   totalVertices: number;
   adjacencies: number[][];

@@ -35,7 +35,7 @@ test('Breadth First Search', () => {
   expect(results[4]).toBe('Visited vertex: 4');
 });
 
-test('Path to 4', () => {
+test('Shortest path to 4', () => {
   const path = g.pathTo(4);
   expect(path).toBe('4 -> 2 -> 0');
 });
