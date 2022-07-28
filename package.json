@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsnd --respawn src/graph.ts",
+    "stack": "jest --watch src/stack",
     "test": "jest --watch"
   },
   "repository": {
@@ -19,9 +20,16 @@
   "homepage": "https://github.com/nhatquang-sl/Data-Structures-And-Algorithms-With-JavaScript#readme",
   "devDependencies": {
     "@types/jest": "^27.4.1",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
     "jest": "^27.5.1",
     "ts-jest": "^27.1.4",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
