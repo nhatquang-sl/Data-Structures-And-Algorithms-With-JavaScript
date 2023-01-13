@@ -16,7 +16,7 @@ class Graph {
   };
 
   showGraph = () => {
-    let results = [];
+    let results: string[] = [];
     for (let i = 0; i < this.totalVertices; i++) {
       let result = `${i} -> `;
       for (let j = 0; j < this.adjacencies[i].length; j++) {
@@ -29,7 +29,7 @@ class Graph {
   };
 
   visited: boolean[] = [];
-  dfs = (v = 0, results = []) => {
+  dfs = (v = 0, results: string[] = []) => {
     results.push(`Visited vertex: ${v}`);
     this.visited[v] = true;
 
